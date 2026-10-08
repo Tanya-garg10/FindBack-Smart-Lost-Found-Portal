@@ -1,20 +1,119 @@
+# FindBack - Smart Lost & Found Portal
+
 <div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
+  <h3>"Lost something? Find it back."</h3>
+  <p>A campus-wide lost and found platform with intelligent matching and verification system</p>
 </div>
 
-# Run and deploy your AI Studio app
+## 🎯 Features
 
-This contains everything you need to run your app locally.
+- **Report Lost/Found Items**: Easy form to report lost items or found items on campus
+- **Smart Matching**: Intelligent matching algorithm that pairs lost and found items based on:
+  - Category matching
+  - Description similarity
+  - Location proximity
+  - Date proximity
+- **Claim Verification**: Structured claim process with unique feature verification
+- **Admin Dashboard**: Admin panel for approving claims, verifying items, and managing reports
+- **Real-time Updates**: Live notifications for matches, claims, and status updates
+- **Role-based Access**: Student and Admin roles with appropriate permissions
+- **User Authentication**: Google OAuth integration for secure sign-in
 
-View your app in AI Studio: https://ai.studio/apps/ddb917a8-1a45-4dd5-bfbb-ae2b033b81cb
+## 🛠️ Tech Stack
 
-## Run Locally
+- **Frontend**: React 19 + TypeScript
+- **Build Tool**: Vite
+- **Styling**: Tailwind CSS v4
+- **Icons**: Lucide React
+- **Animations**: Motion
+- **Backend**: Firebase (Authentication & Firestore)
+- **State Management**: React Hooks
 
-**Prerequisites:**  Node.js
+## 📋 Prerequisites
 
+- Node.js (v18 or higher)
+- A Firebase project with:
+  - Authentication enabled (Google provider)
+  - Firestore Database
+  - Google Cloud credentials configured
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## 🚀 Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/Tanya-garg10/FindBack-Smart-Lost-Found-Portal.git
+cd FindBack-Smart-Lost-Found-Portal
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Set up Firebase:
+   - Create a Firebase project at [console.firebase.google.com](https://console.firebase.google.com)
+   - Enable Google Authentication
+   - Create a Firestore Database
+   - Copy your Firebase config and update `src/firebase.ts` with your credentials
+
+4. Run the development server:
+```bash
+npm run dev
+```
+
+The app will be available at `http://localhost:3000`
+
+## 📁 Project Structure
+
+```
+src/
+├── components/          # React components
+│   ├── AdminDashboardView.tsx
+│   ├── DashboardView.tsx
+│   ├── ItemDetailView.tsx
+│   ├── Navbar.tsx
+│   ├── ReportFormView.tsx
+│   └── ...
+├── firebase.ts          # Firebase configuration
+├── matchingEngine.ts    # Item matching algorithm
+├── types.ts             # TypeScript type definitions
+├── demoData.ts          # Demo data for testing
+└── App.tsx              # Main application component
+```
+
+## 🔧 Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run lint` - Run TypeScript type checking
+
+## 👥 User Roles
+
+### Student
+- Report lost items
+- Report found items
+- Search and browse items
+- Submit claims for found items
+- View own reports and claims
+
+### Admin
+- View all reported items
+- Approve or reject claims
+- Verify item ownership
+- Mark items as returned
+- Remove duplicate reports
+
+## 🔐 Firebase Setup
+
+1. Enable Google Sign-In in Firebase Authentication
+2. Create Firestore Database in Test Mode (or configure proper rules)
+3. Download Firebase config and update `src/firebase.ts`
+
+## 📝 License
+
+This project is open source and available for educational purposes.
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
