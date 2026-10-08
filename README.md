@@ -1,8 +1,11 @@
+<div align="center">
+
 # FindBack - Smart Lost & Found Portal
 
-<div align="center">
-  <h3>"Lost something? Find it back."</h3>
-  <p>A campus-wide lost and found platform with intelligent matching and verification system</p>
+**"Lost something? Find it back."**
+
+A campus-wide lost and found platform with intelligent matching and verification system
+
 </div>
 
 ## 🎯 Features
@@ -112,7 +115,9 @@ src/
 
 ## 📝 License
 
-This project is open source and available for educational purposes.
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+Copyright (c) 2026 Tanya Garg
 
 ## 🤝 Contributing
 
