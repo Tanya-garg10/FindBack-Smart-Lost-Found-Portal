@@ -1,0 +1,334 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "Registered student, staff, or administrator in FindBack.",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "maxLength": 200
+        },
+        "role": {
+          "type": "string",
+          "enum": ["student", "admin"]
+        },
+        "department": {
+          "type": "string",
+          "maxLength": 100
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["uid", "name", "email", "role", "createdAt"]
+    },
+    "Item": {
+      "title": "Item",
+      "description": "A reported lost or found item on the college campus.",
+      "type": "object",
+      "properties": {
+        "reportCode": {
+          "type": "string",
+          "maxLength": 32,
+          "pattern": "^[A-Z0-9\\-]+$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 140
+        },
+        "description": {
+          "type": "string",
+          "minLength": 5,
+          "maxLength": 2000
+        },
+        "additionalDetails": {
+          "type": "string",
+          "maxLength": 1000
+        },
+        "category": {
+          "type": "string",
+          "enum": [
+            "Electronics",
+            "ID Cards",
+            "Bags",
+            "Stationery",
+            "Clothing",
+            "Accessories",
+            "Other"
+          ]
+        },
+        "type": {
+          "type": "string",
+          "enum": ["lost", "found"]
+        },
+        "date": {
+          "type": "string",
+          "maxLength": 40
+        },
+        "location": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 160
+        },
+        "image": {
+          "type": "string",
+          "maxLength": 600000
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "Reported",
+            "Possible Match",
+            "Verification Pending",
+            "Verified",
+            "Returned",
+            "Flagged"
+          ]
+        },
+        "userId": {
+          "type": "string",
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "reporterName": {
+          "type": "string",
+          "maxLength": 100
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "reportCode",
+        "title",
+        "description",
+        "category",
+        "type",
+        "date",
+        "location",
+        "image",
+        "status",
+        "userId",
+        "reporterName",
+        "createdAt"
+      ]
+    },
+    "Match": {
+      "title": "Match",
+      "description": "Smart match record linking a lost item report and a found item report.",
+      "type": "object",
+      "properties": {
+        "lostItemId": {
+          "type": "string",
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "foundItemId": {
+          "type": "string",
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "lostItemTitle": {
+          "type": "string",
+          "maxLength": 140
+        },
+        "foundItemTitle": {
+          "type": "string",
+          "maxLength": 140
+        },
+        "matchScore": {
+          "type": "number"
+        },
+        "categoryMatch": {
+          "type": "boolean"
+        },
+        "descriptionSimilarity": {
+          "type": "boolean"
+        },
+        "locationMatch": {
+          "type": "boolean"
+        },
+        "dateMatch": {
+          "type": "boolean"
+        },
+        "reasonsSummary": {
+          "type": "string",
+          "maxLength": 500
+        },
+        "status": {
+          "type": "string",
+          "enum": ["Active", "Claimed", "Verified", "Dismissed"]
+        },
+        "createdBy": {
+          "type": "string",
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "lostItemId",
+        "foundItemId",
+        "lostItemTitle",
+        "foundItemTitle",
+        "matchScore",
+        "categoryMatch",
+        "descriptionSimilarity",
+        "locationMatch",
+        "dateMatch",
+        "reasonsSummary",
+        "status",
+        "createdBy",
+        "createdAt"
+      ]
+    },
+    "Claim": {
+      "title": "Claim",
+      "description": "Ownership verification claim submitted by a user for a reported item.",
+      "type": "object",
+      "properties": {
+        "itemId": {
+          "type": "string",
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "matchedLostItemId": {
+          "type": "string",
+          "maxLength": 128
+        },
+        "itemTitle": {
+          "type": "string",
+          "maxLength": 140
+        },
+        "claimantId": {
+          "type": "string",
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "claimantName": {
+          "type": "string",
+          "maxLength": 100
+        },
+        "uniqueFeature": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 600
+        },
+        "attachedContents": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 600
+        },
+        "exactLastSeen": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 400
+        },
+        "proofImage": {
+          "type": "string",
+          "maxLength": 600000
+        },
+        "status": {
+          "type": "string",
+          "enum": ["Verification Pending", "Approved", "Rejected"]
+        },
+        "adminNotes": {
+          "type": "string",
+          "maxLength": 500
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "itemId",
+        "itemTitle",
+        "claimantId",
+        "claimantName",
+        "uniqueFeature",
+        "attachedContents",
+        "exactLastSeen",
+        "status",
+        "createdAt"
+      ]
+    },
+    "Notification": {
+      "title": "Notification",
+      "description": "User notification for matches, claims, ownership verification, and returns.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "message": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 400
+        },
+        "type": {
+          "type": "string",
+          "enum": ["match", "claim", "verified", "returned", "system"]
+        },
+        "relatedItemId": {
+          "type": "string",
+          "maxLength": 128
+        },
+        "read": {
+          "type": "boolean"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["userId", "message", "type", "read", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/User" },
+      "description": "User profile documents containing private email and role."
+    },
+    "/items/{itemId}": {
+      "schema": { "$ref": "#/entities/Item" },
+      "description": "Publicly readable lost and found campus item reports."
+    },
+    "/matches/{matchId}": {
+      "schema": { "$ref": "#/entities/Match" },
+      "description": "Automated and verified match records between lost and found items."
+    },
+    "/claims/{claimId}": {
+      "schema": { "$ref": "#/entities/Claim" },
+      "description": "Ownership verification claims submitted by students/staff."
+    },
+    "/notifications/{notificationId}": {
+      "schema": { "$ref": "#/entities/Notification" },
+      "description": "Notifications sent to users regarding matches, claims, and returns."
+    }
+  }
+}

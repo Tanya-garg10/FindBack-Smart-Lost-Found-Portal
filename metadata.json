@@ -1,0 +1,6 @@
+{
+  "name": "FindBack – Smart Lost & Found Portal",
+  "description": "A smarter way to reconnect lost belongings with their owners across campus with automated match scoring, ownership verification, and real-time return tracking.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
