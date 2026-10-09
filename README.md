@@ -90,6 +90,41 @@ src/
 - `npm run build` - Build for production
 - `npm run preview` - Preview production build
 - `npm run lint` - Run TypeScript type checking
+- `npm run deploy` - Build and deploy to Firebase Hosting
+
+## 🚀 Deployment
+
+### Firebase Hosting (Recommended)
+
+1. Install Firebase CLI:
+```bash
+npm install -g firebase-tools
+```
+
+2. Login to Firebase:
+```bash
+firebase login
+```
+
+3. Update `.firebaserc` with your Firebase project ID:
+```json
+{
+  "projects": {
+    "default": "your-actual-project-id"
+  }
+}
+```
+
+4. Deploy:
+```bash
+npm run deploy
+```
+
+### Alternative Deployment Options
+
+- **Vercel**: Import repository on vercel.com and add environment variables
+- **Netlify**: Connect GitHub repo with build command `npm run build` and publish directory `dist`
+- **GitHub Pages**: Configure base path in `vite.config.ts` and use gh-pages
 
 ## 👥 User Roles
 
